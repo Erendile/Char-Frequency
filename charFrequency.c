@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define SIZE 30
 
 typedef struct Letters
 {
@@ -17,11 +18,11 @@ Letter ** arr;
 
 int main()
 {
-    int size = 0;
-    char *text = "2a98Fa- tTa_?)2*at 9-9_9Ff8*?";
+    int size = 0, j = 0;;
+    printf("Enter the text you want to see the character frequency output.\n\n");
+    char text[SIZE];
+    gets(text);
     size = strlen(text);
-    int j = 0;
-
     for(int i = 0; i < size; i++)
     {
         if(!i)
@@ -58,7 +59,7 @@ int control(const char *text, int size, int location)
 {
     for(int i = 0; i < size; i++)
     {
-        if(text[location] == arr[i]->letter)
+        if(text[location] == arr[i]->letter || text[location] == (arr[i]->letter + 32) || (text[i] + 32) == arr[i]->letter)
             return 0;
     }
     return 1;
@@ -69,26 +70,30 @@ int frequencyC(const char *text, int size, int location)
     int count = 0;
     for(int i = 0; i < size; i++)
     {
-        if(text[location] == text[i])
+        if(text[location] == text[i] || text[location] == (text[i] + 32) || (text[location] + 32) == text[i])
             count++;
     }
     return count;
 }
 
 /*
+input:
+ARTificial INtelligence DILE
+
 output:
-Character: '2', Frequency: 2
-Character: 'a', Frequency: 4
-Character: '9', Frequency: 4
-Character: '8', Frequency: 2
-Character: 'F', Frequency: 2
-Character: '-', Frequency: 2
-Character: ' ', Frequency: 2
-Character: 't', Frequency: 2
-Character: 'T', Frequency: 1
-Character: '_', Frequency: 2
-Character: '?', Frequency: 2
-Character: ')', Frequency: 1
-Character: '*', Frequency: 2
+Character: 'A', Frequency: 2
+Character: 'R', Frequency: 1
+Character: 'T', Frequency: 2
+Character: 'i', Frequency: 6
 Character: 'f', Frequency: 1
+Character: 'c', Frequency: 2
+Character: 'l', Frequency: 4
+Character: ' ', Frequency: 2
+Character: 'I', Frequency: 6
+Character: 'N', Frequency: 2
+Character: 'e', Frequency: 4
+Character: 'g', Frequency: 1
+Character: 'D', Frequency: 1
+Character: 'L', Frequency: 4
+Character: 'E', Frequency: 4
 */
